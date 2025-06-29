@@ -1,0 +1,184 @@
+[
+  {
+    "_id": "pdmvserv_Run2024F_JetMET0_BTVNANOv15_250528_052707_7815",
+    "Campaign": "Run3ReReco",
+    "CMSSWVersion": "CMSSW_15_0_6",
+    "RequestType": "ReReco",
+    "RequestPriority": 400000,
+    "InputDataset": "/JetMET0/Run2024F-MINIv6NANOv15-v2/MINIAOD",
+    "RequestStatus": "completed",
+    "RequestName": "pdmvserv_Run2024F_JetMET0_BTVNANOv15_250528_052707_7815",
+    "EventsPerJob": 28800,
+    "LumisPerJob": 8,
+    "FilesPerJob": 1,
+    "OutputDatasets": ["/JetMET0/Run2024F-BTVNANOv15-v1/NANOAOD"],
+    "SiteBlacklist": [],
+    "SiteWhitelist": [
+      "T1_US_FNAL",
+      "T2_IT_Bari",
+      "T2_US_UCSD",
+      "T2_CH_CERN",
+      "T2_DE_DESY",
+      "T2_ES_CIEMAT"
+    ],
+    "Team": "production",
+    "TotalEstimatedJobs": 10750,
+    "TotalInputEvents": 309079689,
+    "TotalInputLumis": 71092,
+    "TotalInputFiles": 5671,
+    "jobs_created": 5000,
+    "jobs_pending": 1000,
+    "jobs_running": 2000,
+    "jobs_success": 1000,
+    "jobs_failed": 1000
+  },
+  {
+    "_id": "pdmvserv_Run2024H_EGamma1_BTVNANOv15_250528_052815_4770",
+    "Campaign": "Run3ReReco",
+    "CMSSWVersion": "CMSSW_15_0_6",
+    "RequestType": "ReReco",
+    "RequestPriority": 400000,
+    "InputDataset": "/EGamma1/Run2024H-MINIv6NANOv15-v1/MINIAOD",
+    "RequestStatus": "completed",
+    "RequestName": "pdmvserv_Run2024H_EGamma1_BTVNANOv15_250528_052815_4770",
+    "EventsPerJob": 28800,
+    "LumisPerJob": 8,
+    "FilesPerJob": 1,
+    "OutputDatasets": ["/EGamma1/Run2024H-BTVNANOv15-v1/NANOAOD"],
+    "SiteBlacklist": [],
+    "SiteWhitelist": [
+      "T1_US_FNAL",
+      "T2_IT_Rome",
+      "T2_US_Vanderbilt",
+      "T1_ES_PIC",
+      "T1_UK_RAL",
+      "T2_CH_CERN",
+      "T2_DE_DESY"
+    ],
+    "Team": "production",
+    "TotalEstimatedJobs": 4713,
+    "TotalInputEvents": 134835799,
+    "TotalInputLumis": 14734,
+    "TotalInputFiles": 2221,
+    "jobs_created": 50,
+    "jobs_pending": 1,
+    "jobs_running": 9,
+    "jobs_success": 40,
+    "jobs_failed": 0
+  },
+  {
+    "_id": "pdmvserv_task_TSG-Run3Winter25GS-00138__v1_T_250317_054932_6695",
+    "RequestType": "TaskChain",
+    "TaskChain": 5,
+    "RequestPriority": 110001,
+    "Task1": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25GS",
+      "RequestNumEvents": 10000000
+    },
+    "Task2": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25Digi"
+    },
+    "Task3": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25Reco"
+    },
+    "Task4": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25MiniAOD"
+    },
+    "Task5": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25NanoAOD"
+    },
+    "CMSSWVersion": "CMSSW_14_2_2",
+    "Campaign": "Run3Winter25GS",
+    "RequestStatus": "announced",
+    "RequestName": "pdmvserv_task_TSG-Run3Winter25GS-00138__v1_T_250317_054932_6695",
+    "OutputDatasets": [
+      "/XTo2H_Bin-MH-20to250-MX-4000to6000_TuneCP5_13p6TeV_pythia8/Run3Winter25GS-142X_mcRun3_2025_realistic_v7-v1/GEN-SIM",
+      "/XTo2H_Bin-MH-20to250-MX-4000to6000_TuneCP5_13p6TeV_pythia8/Run3Winter25Digi-142X_mcRun3_2025_realistic_v7-v1/GEN-SIM-RAW",
+      "/XTo2H_Bin-MH-20to250-MX-4000to6000_TuneCP5_13p6TeV_pythia8/Run3Winter25Reco-142X_mcRun3_2025_realistic_v7-v1/AODSIM",
+      "/XTo2H_Bin-MH-20to250-MX-4000to6000_TuneCP5_13p6TeV_pythia8/Run3Winter25MiniAOD-142X_mcRun3_2025_realistic_v7-v1/MINIAODSIM",
+      "/XTo2H_Bin-MH-20to250-MX-4000to6000_TuneCP5_13p6TeV_pythia8/Run3Winter25NanoAOD-142X_mcRun3_2025_realistic_v7-v1/NANOAODSIM",
+      "/XTo2H_Bin-MH-20to250-MX-4000to6000_TuneCP5_13p6TeV_pythia8/Run3Winter25Reco-142X_mcRun3_2025_realistic_v7-v1/GEN-SIM-RECO"
+    ],
+    "SiteBlacklist": [],
+    "SiteWhitelist": [
+      "T2_CH_CERN_HLT",
+      "T2_CH_CERN_P5",
+      "T1_US_FNAL",
+      "T2_CH_CERN"
+    ],
+    "Team": "production",
+    "TotalEstimatedJobs": 2000,
+    "TotalInputEvents": 10000000,
+    "TotalInputLumis": 10000,
+    "TotalInputFiles": 0,
+    "jobs_created": 500,
+    "jobs_pending": 10,
+    "jobs_running": 90,
+    "jobs_success": 400,
+    "jobs_failed": 0
+  },
+  {
+    "_id": "cmsunified_task_JME-Run3Winter25GS-00001__v1_T_250410_130101_6548",
+    "RequestType": "StepChain",
+    "RequestPriority": 900007,
+    "CMSSWVersion": "CMSSW_14_2_2",
+    "Campaign": "Run3Winter25GS",
+    "StepChain": 5,
+    "Step1": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25GS",
+      "RequestNumEvents": 30000000
+    },
+    "Step2": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25Digi"
+    },
+    "Step3": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25Reco"
+    },
+    "Step4": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25MiniAOD"
+    },
+    "Step5": {
+      "CMSSWVersion": "CMSSW_14_2_2",
+      "Campaign": "Run3Winter25NanoAOD"
+    },
+    "RequestStatus": "announced",
+    "RequestName": "cmsunified_task_JME-Run3Winter25GS-00001__v1_T_250410_130101_6548",
+    "OutputDatasets": [
+      "/QCD_Bin-PT-15to7000_Par-PT-flat2022_TuneCP5_13p6TeV_pythia8/Run3Winter25Digi-NoPU_142X_mcRun3_2025_realistic_v9-v3/GEN-SIM-RAW",
+      "/QCD_Bin-PT-15to7000_Par-PT-flat2022_TuneCP5_13p6TeV_pythia8/Run3Winter25GS-142X_mcRun3_2025_realistic_v7-v3/GEN-SIM",
+      "/QCD_Bin-PT-15to7000_Par-PT-flat2022_TuneCP5_13p6TeV_pythia8/Run3Winter25MiniAOD-NoPU_142X_mcRun3_2025_realistic_v9-v3/MINIAODSIM",
+      "/QCD_Bin-PT-15to7000_Par-PT-flat2022_TuneCP5_13p6TeV_pythia8/Run3Winter25NanoAOD-NoPU_142X_mcRun3_2025_realistic_v9-v3/NANOAODSIM",
+      "/QCD_Bin-PT-15to7000_Par-PT-flat2022_TuneCP5_13p6TeV_pythia8/Run3Winter25Reco-NoPU_142X_mcRun3_2025_realistic_v9-v3/AODSIM",
+      "/QCD_Bin-PT-15to7000_Par-PT-flat2022_TuneCP5_13p6TeV_pythia8/Run3Winter25Reco-NoPU_142X_mcRun3_2025_realistic_v9-v3/GEN-SIM-RECO"
+    ],
+    "SiteBlacklist": [],
+    "SiteWhitelist": [
+      "T1_DE_KIT",
+      "T1_ES_PIC",
+      "T1_FR_CCIN2P3",
+      "T1_IT_CNAF",
+      "T1_RU_JINR",
+      "T1_UK_RAL",
+      "T1_US_FNAL"
+    ],
+    "Team": "production",
+    "TotalEstimatedJobs": 15000,
+    "TotalInputEvents": 30000000,
+    "TotalInputLumis": 30000,
+    "TotalInputFiles": 0,
+    "jobs_created": 15000,
+    "jobs_pending": 14900,
+    "jobs_running": 0,
+    "jobs_success": 0,
+    "jobs_failed": 100
+  }
+]

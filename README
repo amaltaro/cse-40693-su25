@@ -1,0 +1,25 @@
+Student A: Ryan Hartung
+Student B: Alan Malta Rodrigues
+
+NOTE: the WM Workflow page contains the axios/json requirements for this assignment.
+
+### Rubric Student A
+* Multiple components: Multiple controllers / components are used according to patterns discussed in class (ex: Parent + Child, etc.)
+* User Input: Users can interact with a component. For example, a component with <form>, <select>, <input>etc (more than 2). Note: Does NOT need to be able to be submitted to a server
+* Folder Structure: Feature based folder structure
+* Submission: Submitted on time
+* Comments: Comments in codebase (more than 5). These can be used to detail future work or explain sections in HTML, CSS, or JS
+* Errors: No errors (no errors in console)
+* Multiple Components: Proper use of Data and Event Bindings or Props and Events
+
+
+### Rubric Student B
+* JSON File: Data in JSON file
+* Custom Service: $http / axios in custom service
+* Folder Structure: Custom service for data methods
+* Submission: Submitted on time
+* Comments: Comments in codebase (more than 5). These can be used to detail future work or explain sections in HTML, CSS, or JS
+* Errors: No errors (no errors in console)
+* Multiple Components: Proper use of Data and Event Bindings or Props and Events
+* Asynchronous Data: Asynchronous Data is handled properly in components.
+* Code Review: Completed code review of Student B's work.
