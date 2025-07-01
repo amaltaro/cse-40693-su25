@@ -65,32 +65,11 @@
     "jobs_failed": 0
   },
   {
-    "RequestType": "TaskChain",
-    "TaskChain": 5,
-    "RequestPriority": 110001,
-    "Task1": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25GS",
-      "RequestNumEvents": 10000000
-    },
-    "Task2": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25Digi"
-    },
-    "Task3": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25Reco"
-    },
-    "Task4": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25MiniAOD"
-    },
-    "Task5": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25NanoAOD"
-    },
-    "CMSSWVersion": "CMSSW_14_2_2",
     "Campaign": "Run3Winter25GS",
+    "CMSSWVersion": "CMSSW_14_2_2",
+    "RequestType": "TaskChain",
+    "RequestPriority": 110001,
+    "RequestNumEvents": 10000000,
     "RequestStatus": "announced",
     "RequestName": "pdmvserv_task_TSG-Run3Winter25GS-00138__v1_T_250317_054932_6695",
     "OutputDatasets": [
@@ -120,32 +99,10 @@
     "jobs_failed": 0
   },
   {
+    "Campaign": "Run3Winter25GS",
+    "CMSSWVersion": "CMSSW_14_2_2",
     "RequestType": "StepChain",
     "RequestPriority": 900007,
-    "CMSSWVersion": "CMSSW_14_2_2",
-    "Campaign": "Run3Winter25GS",
-    "StepChain": 5,
-    "Step1": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25GS",
-      "RequestNumEvents": 30000000
-    },
-    "Step2": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25Digi"
-    },
-    "Step3": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25Reco"
-    },
-    "Step4": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25MiniAOD"
-    },
-    "Step5": {
-      "CMSSWVersion": "CMSSW_14_2_2",
-      "Campaign": "Run3Winter25NanoAOD"
-    },
     "RequestStatus": "announced",
     "RequestName": "cmsunified_task_JME-Run3Winter25GS-00001__v1_T_250410_130101_6548",
     "OutputDatasets": [
