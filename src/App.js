@@ -4,7 +4,7 @@ import React from 'react';
 import { Parse } from 'parse';
 import * as Env from './environments.js';
 
-import Components from './Components/Components';
+import Components from './Components/Components.js';
 import './App.css';
 
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
