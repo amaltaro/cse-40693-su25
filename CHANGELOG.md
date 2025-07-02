@@ -10,10 +10,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
-- Remove a few dynamic fields from the JSON dump
 
 ### Fixed
 
+## [0.2.0] - 2025-07-02
+
+### Added
+- Add changelog file
+- Added react-router-dom to the list of dependencies
+- Provide a WorkflowTable module for the table creation
+
+### Changed
+- Remove a few dynamic fields from the JSON dump
+- Refactor html/css into React 
+
+### Fixed
+- updated path for App
+- Fix table syntax for workflow array
 
 ## [0.0.3] - 2025-07-01
 
