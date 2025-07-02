@@ -12,7 +12,7 @@ export const getAllWorkflows = () => {
     // Instead of making an HTTP request, load a list of dictionaries
     // with the actual workflow content
     axios
-      // .get(`${url}/workflows`) FIXME
+      // .get(`${url}/workflows`)
       .get("/js/services/workflow.json")
       .then((response) => {
         console.log("Data retrieved:", response.data);

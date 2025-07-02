@@ -5,7 +5,7 @@ import { Parse } from 'parse';
 import * as Env from './environments.js';
 
 import Components from './Components/Components.js';
-import './App.css';
+// import './App.css';
 
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        This is the App component.
         <Components />
       </header>
     </div>

@@ -1,9 +1,8 @@
-import MainList from './MainList';
+import MainList from './MainList.js';
 
 const Main = () => {
     return (
         <div>
-            This is the Main module/component.
             <MainList />
         </div>
     );

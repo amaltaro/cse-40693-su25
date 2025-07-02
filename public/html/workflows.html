@@ -19,12 +19,11 @@
       integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
       crossorigin="anonymous"
     />
-    <script src="https://unpkg.com/axios/dist/axios.js"></script>
-    <script type="module" src="../app.js"></script>
-    <script type="module" src="../table-functions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.8/dist/axios.min.js"></script>
+    <script type="module" src="/js/components/table_functions.js"></script>
   </head>
   <body>
-    <header>
+      <header>
       <div class="container-fluid bg-primary text-white text-left">
         <div class="row align-items-center" style="border: thick solid #deddca">
           <div class="col-2">
@@ -217,6 +216,9 @@
             </tr>
           </thead>
           <tbody id="app" />
+          <!-- <div id="app>"></div> -->
+          <div id="root"></div>
+          <script src="/static/js/bundle.js"></script>
         </table>
       </div>
     </div>
