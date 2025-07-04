@@ -1,0 +1,68 @@
+/* <weight>: Use a value from 100 to 900
+   <uniquifier>: Use a unique and descriptive class name */
+   .alumni-sans-sc-h1 {
+    font-family: "Alumni Sans SC", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  p .alumni-sans-sc-h2 {
+    font-family: "Alumni Sans SC", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  /* Childlike style */
+  .playpen-sans-li {
+    font-family: "Playpen Sans", sans-serif, cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  /* Futuristic */
+  .audiowide-navbar {
+    font-family: "Audiowide", sans-serif;
+    font-optical-sizing: auto; /* attr added by me */
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  /* it still does not work! */
+  body {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /*
+  .img-s {
+    display: block;
+  }
+  */
+  .img-xs {
+    display: block;
+    width: 64px;
+    height: 64px;
+  }
+  
+  .rounded {
+    border-radius: 25px;
+  }
+  
+  /* mouse effects for pressed links
+  a:link {
+    color: rgb(36, 63, 195);
+    font-weight: bold;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  mouse effects for hovering over links
+  a:hover {
+    color: rgb(150, 173, 31);
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  */
+  

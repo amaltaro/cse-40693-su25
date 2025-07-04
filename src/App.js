@@ -5,7 +5,7 @@ import { Parse } from 'parse';
 import * as Env from './environments.js';
 
 import Components from './Components/Components.js';
-// import './App.css';
+import './styles.css';
 
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;

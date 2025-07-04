@@ -1,52 +1,24 @@
+// This Service module contains important functions for the Workflows table
 // table-functions.js
 // Live table filtering functionality that works with dynamic data
 
 // Global variables for filtering functionality
 let filterInputs, table, tbody;
 
-// Initialize the table functionality
-export function initializeTable() {
-  filterInputs = document.querySelectorAll(".filter-input");
-  table = document.getElementById("workflowTable");
-  tbody = table.querySelector("tbody");
-
-  // Add event listeners to all filter inputs
-  filterInputs.forEach((input) => {
-    // Prevent form submission on Enter key
-    input.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-      }
-    });
-  });
-
-  // Add Sort button functionality
-  const sortBtn = document.getElementById("sortBtn");
-  if (sortBtn) {
-    sortBtn.addEventListener("click", function () {
-      filterTable();
-    });
-  }
-
-  // Add Reset button functionality
-  const resetBtn = document.getElementById("resetBtn");
-  if (resetBtn) {
-    resetBtn.addEventListener("click", function () {
-      resetTable();
-    });
-  }
-
-  // CSV Download functionality
-  const downloadBtn = document.getElementById("downloadCsvBtn");
-  if (downloadBtn) {
-    downloadBtn.addEventListener("click", function () {
-      downloadVisibleRowsAsCSV();
-    });
-  }
-}
-
 // Function to get current rows (works with dynamically loaded data)
 function getCurrentRows() {
+  if (!tbody) {
+    const table = document.getElementById("workflowTable");
+    if (table) {
+      tbody = table.querySelector("tbody");
+    }
+  }
+  
+  if (!tbody) {
+    console.warn("Table body not found");
+    return [];
+  }
+  
   return Array.from(tbody.querySelectorAll("tr"));
 }
 
@@ -87,13 +59,23 @@ function filterTable() {
 
     // Check each filter
     for (const [column, filterValue] of Object.entries(filters)) {
+      let cellValue = '';
+      
+      // First try to find a cell with data-column attribute
       const cell = row.querySelector(`[data-column="${column}"]`);
       if (cell) {
-        const cellValue = cell.textContent.toLowerCase();
-        if (!cellValue.includes(filterValue)) {
-          showRow = false;
-          break;
+        cellValue = cell.textContent.toLowerCase();
+      } else {
+        // If no cell found, try to get data attribute from the row
+        const dataAttr = row.getAttribute(`data-${column}`);
+        if (dataAttr) {
+          cellValue = dataAttr.toLowerCase();
         }
+      }
+      
+      if (cellValue && !cellValue.includes(filterValue)) {
+        showRow = false;
+        break;
       }
     }
 
@@ -173,6 +155,56 @@ function downloadVisibleRowsAsCSV() {
 
 // Function to call after data is loaded
 export function initializeTableFeatures() {
+  // Initialize table elements
+  filterInputs = document.querySelectorAll(".filter-input");
+  table = document.getElementById("workflowTable");
+  tbody = table ? table.querySelector("tbody") : null;
+
+  if (!tbody) {
+    console.warn("Table body not found during initialization");
+    return;
+  }
+
+  // Add event listeners to all filter inputs
+  filterInputs.forEach((input) => {
+    // Trigger filter on Enter key
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        filterTable();
+      }
+    });
+    
+    // Trigger filter on input change (real-time filtering)
+    input.addEventListener("input", function () {
+      filterTable();
+    });
+  });
+
+  // Add Sort button functionality
+  const sortBtn = document.getElementById("sortBtn");
+  if (sortBtn) {
+    sortBtn.addEventListener("click", function () {
+      filterTable();
+    });
+  }
+
+  // Add Reset button functionality
+  const resetBtn = document.getElementById("resetBtn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      resetTable();
+    });
+  }
+
+  // CSV Download functionality
+  const downloadBtn = document.getElementById("downloadCsvBtn");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", function () {
+      downloadVisibleRowsAsCSV();
+    });
+  }
+
   // Update row numbers for initial load
   updateRowNumbers();
 
