@@ -1,7 +1,7 @@
 # Feature 4 - Routing & Parse
 
-Student A: Ryan Hartung
-Student B: Alan Malta Rodrigues
+* Student A: Ryan Hartung
+* Student B: Alan Malta Rodrigues
 
 NOTE: the WM Workflow page contains the axios/json requirements for this assignment.
 
