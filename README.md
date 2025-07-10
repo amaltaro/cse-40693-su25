@@ -1,3 +1,63 @@
+# Feature 5 - Authentication
+
+* Student A: Ryan Hartung
+* Student B: Alan Malta Rodrigues
+
+
+## Rubrics
+
+### Student A
+
+* Protected Route: ProtectedRoute component handles all routes that should not be accessed without login
+* Using Protected Route: Protected Routes are correctly utilized in your application
+* Code Review: Completed code review of Student B's work.
+* Submitted on time
+* Comments in codebase (more than 5). These can be used to detail future work or explain sections in HTML, CSS, or JS
+* No errors (no errors in console / application can be built and run)
+* Correctly versioned release 0.3.0 created on Github and updated CHANGELOG.md
+* Authentication Module: All protected routes cannot be navigated to without authentication
+* Authentication Module: Protected routes redirect to the auth component
+* Authentication Module: User cannot route to auth (login/signup) if already logged in
+* Authentication Module: Place authentication methods in separate service, and user manually typing in URL to protected route will redirect if unauthenticated
+
+
+### Student B
+
+* Parse Auth Service: Parse Service with authentication methods
+* Auth Module: Login/Register components that utilize authentication methods from service
+* Code Review: Completed code review of Student A's work.
+* Submitted on time
+* Comments in codebase (more than 5). These can be used to detail future work or explain sections in HTML, CSS, or JS
+* No errors (no errors in console / application can be built and run)
+* Correctly versioned release 0.3.0 created on Github and updated CHANGELOG.md
+* Authentication Module: All protected routes cannot be navigated to without authentication
+* Authentication Module: User cannot route to auth (login/signup) if already logged in
+* Authentication Module: Place authentication methods in separate service, and user manually typing in URL to protected route will redirect if unauthenticated
+
+
+## Directory Structure
+
+This React application follows a modern component-based architecture with clear separation of concerns.
+
+### Key Architectural Patterns:
+
+- **Component-Based Structure**: React components are organized in feature-based directories
+- **Service Layer**: Business logic is separated into dedicated service files
+- **Static Assets**: Public directory contains files served directly by the web server
+- **Configuration**: Environment-specific settings are centralized in `environments.js`
+- **Testing**: Test files are co-located with their corresponding components
+- **Styling**: CSS files are organized at both global and component levels
+
+### Development Workflow:
+
+1. **Entry Point**: `src/index.js` bootstraps the React application
+2. **Root Component**: `src/App.js` defines the main application structure
+3. **Routing**: Components handle different application views and features
+4. **Services**: API calls and business logic are centralized in the Services directory
+5. **Styling**: Global styles in `src/index.css` and `src/App.css`, component-specific styles as needed
+
+
+
 # Feature 4 - Routing & Parse
 
 * Student A: Ryan Hartung
@@ -5,9 +65,10 @@
 
 NOTE: the WM Workflow page contains the axios/json requirements for this assignment.
 
-# Rubrics
+## Rubrics
 
-## Student A
+### Student A
+
 * UML diagram in the format shown in class
 * Correctly configured parse initialization
 * Separate Parse Model for each class
@@ -19,7 +80,8 @@ NOTE: the WM Workflow page contains the axios/json requirements for this assignm
 * All Parse queries outside of controllers / components and inside of Parse Models
 * Correctly load asynchronous data to components
 
-## Student B
+### Student B
+
 * Component tree diagram
 * Correctly configure webpack
 * Correctly initialize routing and route from one module to another.
@@ -32,7 +94,7 @@ NOTE: the WM Workflow page contains the axios/json requirements for this assignm
 * Correctly load asynchronous data to components
 
 
-# Directory Structure
+## Directory Structure
 
 Base Feature 3 directory structure is:
 * css
