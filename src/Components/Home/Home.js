@@ -1,4 +1,6 @@
 import MainMenu from '../MainMenu/MainMenu';
+import Auth from '../Credentials/Auth';
+
 export default function Home() {
     return (
         <section> 
@@ -25,8 +27,13 @@ export default function Home() {
     <div className="container">
       <div className="text-center">
         <MainMenu />
-        </div>
-        </div>
+      </div>
+      <br />
+      <br />
+      <div className="text-center">
+        <Auth />
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
