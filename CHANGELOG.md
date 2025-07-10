@@ -13,6 +13,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.2.3] - 2025-07-10
+
+### Added
+- Implemented basic authentication component: registration, login and logout
+
+### Changed
+- Update README for feature 5
+
+### Fixed
+
+
 ## [0.2.2] - 2025-07-04
 
 ### Added
