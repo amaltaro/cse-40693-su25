@@ -13,6 +13,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.2.4] - 2025-07-10
+
+### Added
+- Add ProfileMenu component; adopt it at the header
+- Add ProtectedRoute component
+
+### Changed
+- Integrate ProtectedRoute and render buttons according to user state
+
+### Fixed
+
+
 ## [0.2.3] - 2025-07-10
 
 ### Added
