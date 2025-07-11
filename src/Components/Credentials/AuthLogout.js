@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { checkUser, getUser, logoutUser } from "../../Services/Credentials";
 import { useNavigate } from "react-router-dom";
 
 const AuthLogout = () => {
   const navigate = useNavigate();
-
-  // redirect already authenticated users back to home
-  const [currentUser, setCurrentUser] = useState({
-    email: "",
-    password: ""
-  });
-
 
   useEffect(() => {
     if (checkUser()) {

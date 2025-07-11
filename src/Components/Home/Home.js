@@ -1,5 +1,6 @@
 import MainMenu from '../MainMenu/MainMenu';
 import Auth from '../Credentials/Auth';
+import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
 export default function Home() {
     return (
@@ -8,6 +9,9 @@ export default function Home() {
         <div className="row align-items-center" style={{border: 'thick solid #deddca'}}>
           <div className="col">
             <h1 className="alumni-sans-sc-h1">CMS Workflow Monitoring</h1>
+          </div>
+          <div className="col-1">
+            <ProfileMenu />
           </div>
         </div>
       </div>

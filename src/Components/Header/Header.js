@@ -1,3 +1,5 @@
+import ProfileMenu from '../ProfileMenu/ProfileMenu';
+
 export default function Header({ title = "Default Title" }) {
 
     return (
@@ -12,8 +14,11 @@ export default function Header({ title = "Default Title" }) {
               className="img-fluid img-xs"
             />
           </div>
-          <div className="col-10">
+          <div className="col-9">
             <h2 className="alumni-sans-sc-h1">{title}</h2>
+          </div>
+          <div className="col-1">
+            <ProfileMenu />
           </div>
         </div>
       </div>
