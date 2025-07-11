@@ -1,5 +1,5 @@
 import MainMenu from '../MainMenu/MainMenu';
-import Auth from '../Credentials/Auth';
+//import Auth from '../Credentials/Auth';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
 export default function Home() {
@@ -34,9 +34,11 @@ export default function Home() {
       </div>
       <br />
       <br />
-      <div className="text-center">
+     {/* With ProtectedRoute, this Auth component is no longer needed at the Home page.
+       <div className="text-center">
         <Auth />
       </div>
+      */}
     </div>
 
     <script
