@@ -13,6 +13,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.4.0] - 2025-07-19
+
+### Added
+- Added bootstrap-icons to the application for enhanced UI
+- New modal system to handle authentication transitions and user feedback
+- Redesigned credentials components with modern card layouts for forms and buttons
+
+### Changed
+- Refactored ProtectedRoute component to automatically redirect unauthenticated users to `/auth` instead of showing unauthorized page
+- Adopted Modal component across all credential components for consistent user experience
+- Applied modern/responsive design to ProfileMenu
+- Redesigned Credentials component with modern card layouts for forms and buttons
+- Fixed responsive issues across different screen sizes for Home and Header components
+- Fixed logout call to throw errors instead of using alerts from Services layer
+- Updated README with Feature 6 list of developments
+
+### Fixed
+- Fixed responsive problems across different screen sizes for Home and Header
+- Improved error handling in logout process by throwing errors instead of alerts
+
 ## [0.3.0] - 2025-07-10
 
 ### Added
