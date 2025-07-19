@@ -11,7 +11,12 @@ const Auth = () => {
             <div className="auth-card">
                 <div className="auth-header">
                     <h2 className="auth-title">Welcome to CMS Workflow Monitoring</h2>
-                    <p className="auth-subtitle">Please authenticate to continue</p>
+                    <p className="auth-subtitle">
+                        {isLoggedIn
+                            ? "You are already authenticated. You can logout below or navigate to the home page."
+                            : "Please authenticate to continue"
+                        }
+                    </p>
                 </div>
 
                 <div className="auth-buttons">
@@ -38,6 +43,12 @@ const Auth = () => {
                     )}
                     {isLoggedIn && (
                         <div className="auth-button-group">
+                            <Link to="/" className="auth-link">
+                                <button className="btn btn-primary btn-lg auth-btn auth-btn-home">
+                                    <i className="bi bi-house-fill me-2"></i>
+                                    Go to Home
+                                </button>
+                            </Link>
                             <Link to="/auth/logout" className="auth-link">
                                 <button className="btn btn-danger btn-lg auth-btn auth-btn-logout">
                                     <i className="bi bi-box-arrow-left me-2"></i>

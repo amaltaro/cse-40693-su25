@@ -1,7 +1,7 @@
 import React from "react";
 import "./AuthForm.css";
 
-const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
+const AuthForm = ({ user, isLogin, onChange, onSubmit, error }) => {
 
   return (
     <div className="auth-form-container">
@@ -16,6 +16,12 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
         </div>
 
         <form onSubmit={onSubmit} autoComplete="off" className="auth-form">
+          {error && (
+            <div className="alert alert-danger" role="alert">
+              <i className="bi bi-exclamation-triangle me-2"></i>
+              {error}
+            </div>
+          )}
           {!isLogin ? (
             <div>
               <div className="form-group">
