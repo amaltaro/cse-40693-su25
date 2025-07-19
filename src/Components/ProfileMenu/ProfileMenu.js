@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { checkUser, getUser } from "../../Services/Credentials";
 import { useNavigate } from "react-router-dom";
+import "./ProfileMenu.css";
 
 
 const ProfileMenu = () => {
@@ -25,12 +26,24 @@ const ProfileMenu = () => {
 
   return (
         user ? (
-        <div>
-          <span>Welcome, {user.get("firstName") || user.get("email")}</span>
-          <button onClick={handleLogout} style={{ marginLeft: 10 }}>Logout</button>
+        <div className="profile-menu-container">
+          <div className="profile-welcome-row">
+            <span className="profile-welcome">Welcome, {user.get("firstName") || user.get("email")}</span>
+          </div>
+          <div className="profile-button-row">
+            <button onClick={handleLogout} className="profile-btn profile-btn-logout">
+              <i className="bi bi-box-arrow-left me-1"></i>
+              Logout
+            </button>
+          </div>
         </div>
     ) : (
-        <button onClick={handleLogin}>Login</button>
+        <div className="profile-menu-container">
+          <button onClick={handleLogin} className="profile-btn profile-btn-login">
+            <i className="bi bi-box-arrow-in-right me-1"></i>
+            Login
+          </button>
+        </div>
     )
   );
 };

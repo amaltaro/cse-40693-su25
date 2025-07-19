@@ -14,10 +14,10 @@ export default function Header({ title = "Default Title" }) {
               className="img-fluid img-xs"
             />
           </div>
-          <div className="col-9">
+          <div className="col-lg-8 col-md-7 col-sm-6">
             <h2 className="alumni-sans-sc-h1">{title}</h2>
           </div>
-          <div className="col-1">
+          <div className="col-lg-2 col-md-3 col-sm-4">
             <ProfileMenu />
           </div>
         </div>
