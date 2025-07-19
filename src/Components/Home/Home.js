@@ -7,10 +7,10 @@ export default function Home() {
         <section> 
         <div className="container rounded bg-primary text-white text-center">
         <div className="row align-items-center" style={{border: 'thick solid #deddca'}}>
-          <div className="col">
+          <div className="col-lg-10 col-md-8 col-sm-6">
             <h1 className="alumni-sans-sc-h1">CMS Workflow Monitoring</h1>
           </div>
-          <div className="col-1">
+          <div className="col-lg-2 col-md-4 col-sm-6">
             <ProfileMenu />
           </div>
         </div>

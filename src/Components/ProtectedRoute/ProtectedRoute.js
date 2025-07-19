@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkUser } from "../../Services/Credentials";
 
@@ -8,18 +8,19 @@ const ProtectedRoute = ({ element, ...rest }) => {
   console.log("element: ", element);
   const navigate = useNavigate();
 
-  const goBackHandler = () => {
-    navigate("/auth");
-  };
+  useEffect(() => {
+    if (!checkUser()) {
+      // Automatically redirect unauthenticated users to auth page
+      navigate("/auth");
+    }
+  }, [navigate]);
 
+  // Only render the protected element if user is authenticated
   if (checkUser()) {
     return element;
   } else {
-    return (
-      <div>
-        <p>Unauthorized!</p> <button onClick={goBackHandler}>Go Back.</button>
-      </div>
-    );
+    // Return null while redirecting to prevent flash of unauthorized content
+    return null;
   }
 };
 
