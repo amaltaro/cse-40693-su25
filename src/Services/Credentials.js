@@ -17,7 +17,7 @@ export const createUser = (newUser) => {
       return newUserSaved;
     })
     .catch((error) => {
-      alert(`Error: ${error.message}`);
+      throw error; // Re-throw the error so the calling component knows it failed
     });
 };
 
@@ -29,12 +29,13 @@ export const loginUser = (currUser) => {
       return currUserSaved;
     })
     .catch((error) => {
-      alert(`Error: ${error.message}`);
+      throw error; // Re-throw the error so the calling component knows it failed
     });
 };
 
 export const logoutUser = (currUser) => {
-  return Parse.User.logOut(currUser.email);
+//  return Parse.User.logOut(currUser.email);
+    return Parse.User.logOut();
 };
 
 export const checkUser = () => {
