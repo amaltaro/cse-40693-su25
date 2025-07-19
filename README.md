@@ -1,3 +1,27 @@
+# Feature 6 - Feature Branch
+
+Ryan Hartung:
+1. User should be able to reset a password through a "Forgot password" button
+2. Developer/User should be able to see the status of "Central Services" components
+3. Developer/User should be able to see the status of "Agents" components
+
+Alan Malta Rodrigues:
+1. User should be able to parameterize the URL to access specific workflow objects
+2. User should be able to have a "Summary" page with different filters to summarize the workload in the system
+3. Developer should be able to style the registration form with Bootstrap library and CSS
+
+Technology: Bootstrap, React, Parse, HTML, CSS, Node.
+
+
+## Instructions
+
+### Starting webpack
+```
+npm start
+```
+
+
+
 # Feature 5 - Authentication
 
 * Student A: Ryan Hartung
