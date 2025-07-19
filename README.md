@@ -13,6 +13,15 @@ Alan Malta Rodrigues:
 Technology: Bootstrap, React, Parse, HTML, CSS, Node.
 
 
+## Instructions
+
+### Starting webpack
+```
+npm start
+```
+
+
+
 # Feature 5 - Authentication
 
 * Student A: Ryan Hartung
