@@ -1,0 +1,193 @@
+/* Info Modal Styles */
+.info-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.info-modal {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  animation: slideInUp 0.3s ease-out;
+  overflow: hidden;
+}
+
+.info-modal-header {
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  color: white;
+}
+
+.success-header {
+  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+}
+
+.error-header {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+.loading-header {
+  background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.loading-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  animation: spin 1s linear infinite;
+}
+
+.info-modal-header h3 {
+  margin: 0;
+  font-family: "Alumni Sans SC", sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.info-modal-body {
+  padding: 2rem;
+  text-align: center;
+}
+
+.info-modal-body p {
+  margin: 0;
+  font-family: "Playpen Sans", sans-serif;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+.info-modal-footer {
+  padding: 0 2rem 2rem;
+  text-align: center;
+}
+
+.info-modal-btn {
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Playpen Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.success-btn {
+  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+  color: white;
+}
+
+.success-btn:hover {
+  background: linear-gradient(135deg, #0b5ed7 0%, #0a58ca 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4);
+}
+
+.error-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+}
+
+.error-btn:hover {
+  background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+}
+
+.info-modal-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .info-modal {
+    width: 95%;
+    margin: 1rem;
+  }
+  
+  .info-modal-header {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+  
+  .info-modal-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .info-modal-body {
+    padding: 1.5rem;
+  }
+  
+  .info-modal-body p {
+    font-size: 1rem;
+  }
+  
+  .info-modal-footer {
+    padding: 0 1.5rem 1.5rem;
+  }
+  
+  .success-icon,
+  .error-icon {
+    font-size: 2.5rem;
+  }
+} 
