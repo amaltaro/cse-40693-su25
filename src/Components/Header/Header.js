@@ -23,15 +23,21 @@ export default function Header({ title = "Default Title" }) {
                     
                     <div className="title-container">
                         <h2 className="header-title">
-                            <span 
-                                className="home-link" 
-                                onClick={handleLogoClick}
-                                title="Go to Home"
-                            >
-                                Home
-                            </span>
-                            <span className="title-separator"> / </span>
-                            <span className="page-title">{title}</span>
+                            {title ? (
+                                <>
+                                    <span
+                                        className="home-link"
+                                        onClick={handleLogoClick}
+                                        title="Go to Home"
+                                    >
+                                        Home
+                                    </span>
+                                    <span className="title-separator"> / </span>
+                                    <span className="page-title">{title}</span>
+                                </>
+                            ) : (
+                                <span className="page-title">Home</span>
+                            )}
                         </h2>
                     </div>
                     
