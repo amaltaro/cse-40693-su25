@@ -4,6 +4,7 @@
 
 // Global variables for filtering functionality
 let filterInputs, table, tbody;
+let eventListenersAdded = false; // Track if event listeners are already added
 
 // Function to get current rows (works with dynamically loaded data)
 function getCurrentRows() {
@@ -101,55 +102,71 @@ function updateRowNumbers() {
 
 // Function to download visible rows as CSV
 function downloadVisibleRowsAsCSV() {
-  const table = document.getElementById("workflowTable");
-  const headers = Array.from(table.querySelectorAll("thead th")).map((th) =>
-    th.textContent.trim()
-  );
-  const rows = getCurrentRows();
-  const visibleRows = rows.filter((row) => row.style.display !== "none");
+  try {
+    const table = document.getElementById("workflowTable");
+    if (!table) {
+      console.warn("Workflow table not found");
+      return;
+    }
 
-  // Create CSV content
-  let csvContent = "";
+    const headers = Array.from(table.querySelectorAll("thead th")).map((th) =>
+      th.textContent.trim()
+    );
+    const rows = getCurrentRows();
+    const visibleRows = rows.filter((row) => row.style.display !== "none");
 
-  // Add headers
-  csvContent += headers.map((header) => `"${header}"`).join(",") + "\n";
+    if (visibleRows.length === 0) {
+      console.warn("No visible rows to download");
+      return;
+    }
 
-  // Add visible data rows
-  visibleRows.forEach((row) => {
-    const cells = Array.from(row.querySelectorAll("th, td"));
-    const rowData = cells.map((cell) => {
-      // Clean and escape cell content
-      let content = cell.textContent.trim();
-      // Escape quotes by doubling them
-      content = content.replace(/"/g, '""');
-      return `"${content}"`;
+    // Create CSV content
+    let csvContent = "";
+
+    // Add headers
+    csvContent += headers.map((header) => `"${header}"`).join(",") + "\n";
+
+    // Add visible data rows
+    visibleRows.forEach((row) => {
+      const cells = Array.from(row.querySelectorAll("th, td"));
+      const rowData = cells.map((cell) => {
+        // Clean and escape cell content
+        let content = cell.textContent.trim();
+        // Escape quotes by doubling them
+        content = content.replace(/"/g, '""');
+        return `"${content}"`;
+      });
+      csvContent += rowData.join(",") + "\n";
     });
-    csvContent += rowData.join(",") + "\n";
-  });
 
-  // Create and trigger download
-  const blob = new Blob([csvContent], {
-    type: "text/csv;charset=utf-8;",
-  });
-  const link = document.createElement("a");
+    // Create and trigger download
+    const blob = new Blob([csvContent], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const link = document.createElement("a");
 
-  if (link.download !== undefined) {
-    const url = URL.createObjectURL(blob);
-    link.setAttribute("href", url);
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
 
-    // Generate filename with timestamp
-    const now = new Date();
-    const timestamp = now.toISOString().slice(0, 19).replace(/:/g, "-");
-    const filename = `cms_workflow_data_${timestamp}.csv`;
+      // Generate filename with timestamp
+      const now = new Date();
+      const timestamp = now.toISOString().slice(0, 19).replace(/:/g, "-");
+      const filename = `cms_workflow_data_${timestamp}.csv`;
 
-    link.setAttribute("download", filename);
-    link.style.visibility = "hidden";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+      link.setAttribute("download", filename);
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
-    // Clean up the URL object
-    URL.revokeObjectURL(url);
+      // Clean up the URL object
+      URL.revokeObjectURL(url);
+
+      console.log(`CSV download initiated: ${filename}`);
+    }
+  } catch (error) {
+    console.error("Error downloading CSV:", error);
   }
 }
 
@@ -165,44 +182,49 @@ export function initializeTableFeatures() {
     return;
   }
 
-  // Add event listeners to all filter inputs
-  filterInputs.forEach((input) => {
-    // Trigger filter on Enter key
-    input.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
+  // Only add event listeners once
+  if (!eventListenersAdded) {
+    // Add event listeners to all filter inputs
+    filterInputs.forEach((input) => {
+      // Trigger filter on Enter key
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          filterTable();
+        }
+      });
+
+      // Trigger filter on input change (real-time filtering)
+      input.addEventListener("input", function () {
         filterTable();
-      }
+      });
     });
-    
-    // Trigger filter on input change (real-time filtering)
-    input.addEventListener("input", function () {
-      filterTable();
-    });
-  });
 
-  // Add Sort button functionality
-  const sortBtn = document.getElementById("sortBtn");
-  if (sortBtn) {
-    sortBtn.addEventListener("click", function () {
-      filterTable();
-    });
-  }
+    // Add Sort button functionality
+    const sortBtn = document.getElementById("sortBtn");
+    if (sortBtn) {
+      sortBtn.addEventListener("click", function () {
+        filterTable();
+      });
+    }
 
-  // Add Reset button functionality
-  const resetBtn = document.getElementById("resetBtn");
-  if (resetBtn) {
-    resetBtn.addEventListener("click", function () {
-      resetTable();
-    });
-  }
+    // Add Reset button functionality
+    const resetBtn = document.getElementById("resetBtn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        resetTable();
+      });
+    }
 
-  // CSV Download functionality
-  const downloadBtn = document.getElementById("downloadCsvBtn");
-  if (downloadBtn) {
-    downloadBtn.addEventListener("click", function () {
-      downloadVisibleRowsAsCSV();
-    });
+    // CSV Download functionality
+    const downloadBtn = document.getElementById("downloadCsvBtn");
+    if (downloadBtn) {
+      downloadBtn.addEventListener("click", function () {
+        downloadVisibleRowsAsCSV();
+      });
+    }
+
+    eventListenersAdded = true;
   }
 
   // Update row numbers for initial load
@@ -210,6 +232,34 @@ export function initializeTableFeatures() {
 
   // Apply any existing filters
   filterTable();
+}
+
+// Sorting function for workflow data
+export const sortWorkflows = (workflows, key, direction) => {
+    if (!key || !workflows) return workflows;
+
+    return [...workflows].sort((a, b) => {
+        let aValue = a[key];
+        let bValue = b[key];
+
+        // Handle numeric values
+        if (typeof aValue === 'number' && typeof bValue === 'number') {
+            return direction === 'asc' ? aValue - bValue : bValue - aValue;
+        }
+
+        // Handle string values
+        aValue = String(aValue || '').toLowerCase();
+        bValue = String(bValue || '').toLowerCase();
+
+        if (aValue < bValue) return direction === 'asc' ? -1 : 1;
+        if (aValue > bValue) return direction === 'asc' ? 1 : -1;
+        return 0;
+    });
+};
+
+// Function to reset event listeners flag (useful for testing or component unmounting)
+export function resetEventListeners() {
+  eventListenersAdded = false;
 }
 
 // Export functions for external use
