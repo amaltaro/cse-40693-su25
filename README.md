@@ -6,11 +6,45 @@ Ryan Hartung:
 3. Developer/User should be able to see the status of "Agents" components
 
 Alan Malta Rodrigues:
-1. User should be able to parameterize the URL to access specific workflow objects
+1. User should be able to parameterize the URL to access specific workflow objects ✅
 2. User should be able to have a "Summary" page with different filters to summarize the workload in the system
-3. Developer should be able to style the registration form with Bootstrap library and CSS
+3. Developer should be able to style the registration form with Bootstrap library and CSS ✅
 
 Technology: Bootstrap, React, Parse, HTML, CSS, Node.
+
+## Workflow Query Parameters
+
+The workflow page supports URL query parameters for filtering workflow data:
+
+### Endpoint
+```
+http://localhost:3000/workflow
+```
+
+### Supported Query Parameters
+- `workflow` - Filter by workflow name
+- `status` - Filter by workflow status
+- `type` - Filter by workflow type
+- `campaign` - Filter by campaign name
+- `cmssw` - Filter by CMSSW version
+
+### Usage Examples
+```
+# Single filter
+/workflow?workflow=test
+
+# Multiple filters
+/workflow?status=active&type=manual
+
+# All filters
+/workflow?workflow=test&status=active&type=manual&campaign=Run2023&cmssw=12_4_0
+```
+
+### Features
+- Case-insensitive filtering
+- Real-time table updates
+- Visual filter indicators
+- Bookmarkable filtered views
 
 
 ## Instructions
