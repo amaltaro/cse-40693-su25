@@ -1,5 +1,6 @@
 import React from "react";
 import "./AuthForm.css";
+import { Link } from 'react-router-dom';
 
 const AuthForm = ({ user, isLogin, onChange, onSubmit, error }) => {
 
@@ -85,6 +86,13 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit, error }) => {
             <i className="bi bi-check-circle me-2"></i>
             {isLogin ? "Sign In" : "Create Account"}
           </button>
+
+          <Link to="/auth/forgotPass" className="auth-link">
+            <button className="btn btn-primary btn-lg auth-btn auth-btn-register">
+              <i className="bi bi-person-plus-fill me-2"></i>
+              Forgot Password
+            </button>
+          </Link>
         </form>
       </div>
     </div>

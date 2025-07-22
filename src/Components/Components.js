@@ -5,6 +5,7 @@ import Auth from './Credentials/Auth';
 import AuthRegister from './Credentials/AuthRegister';
 import AuthLogin from './Credentials/AuthLogin';
 import AuthLogout from './Credentials/AuthLogout';
+import AuthForgotPass from './Credentials/AuthForgotPass';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
@@ -21,6 +22,7 @@ const Components = () => {
                 <Route path="/auth/register" element={<AuthRegister />} />
                 <Route path="/auth/login" element={<AuthLogin />} />
                 <Route path="/auth/logout" element={<AuthLogout />} />
+                <Route path="/auth/forgotPass" element={<AuthForgotPass />} />
                 <Route path="*" element={<Navigate to="/auth" replace />} />
             </Routes>
         </Router>

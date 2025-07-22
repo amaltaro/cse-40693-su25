@@ -45,3 +45,15 @@ export const checkUser = () => {
 export const getUser = () => {
     return Parse.User.current();
   };
+
+// used in auth login component
+export const changePassword = (currUser) => {
+  return Parse.User.requestPasswordReset(currUser.email)
+    .then(() => {
+      return true; // Indicate success
+    })
+    .catch((error) => {
+      throw error; // Re-throw the error so the calling component knows it failed
+    });
+};
+
