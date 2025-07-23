@@ -3,7 +3,7 @@ import Location from './Location/Location';
 import Workflow from './Workflow/Workflow';
 import Summary from './Summary/Summary';
 import Agents from './Agents/Agents';
-import Central from './Central/Central';
+import Services from './Services/Services';
 import Auth from './Credentials/Auth';
 import AuthRegister from './Credentials/AuthRegister';
 import AuthLogin from './Credentials/AuthLogin';
@@ -23,7 +23,7 @@ const Components = () => {
                 <Route path="/location" element={<ProtectedRoute element={<Location />} />} />
                 <Route path="/summary" element={<ProtectedRoute element={<Summary />} />} />
                 <Route path="/agents" element={<ProtectedRoute element={<Agents />} />} />
-                <Route path="/central" element={<ProtectedRoute element={<Central />} />} />
+                <Route path="/services" element={<ProtectedRoute element={<Services />} />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/auth/register" element={<AuthRegister />} />
                 <Route path="/auth/login" element={<AuthLogin />} />

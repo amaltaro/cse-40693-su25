@@ -23,7 +23,7 @@ const MainMenu = () => {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/central" className="nav-link">
+                    <Link to="/services" className="nav-link">
                         <i className="bi bi-server me-2"></i>
                         Central Services
                     </Link>

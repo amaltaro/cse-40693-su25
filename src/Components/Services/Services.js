@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getAllWorkflows, getWorkflowsByQuery } from "../../Services/WorkflowService.js";
 import Header from '../Header/Header.js';
-import "./Central.css";
+import "./Services.css";
 
-const Central = () => {
+const Services = () => {
         return (
         <section>
             <Header title="WM Workflow" />
@@ -12,4 +12,4 @@ const Central = () => {
 );
 };
 
-export default Central;
+export default Services;
