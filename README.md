@@ -7,10 +7,34 @@ Ryan Hartung:
 
 Alan Malta Rodrigues:
 1. User should be able to parameterize the URL to access specific workflow objects ✅
-2. User should be able to have a "Summary" page with different filters to summarize the workload in the system
+2. User should be able to have a "Summary" page with different filters to summarize the workload in the system ✅
 3. Developer should be able to style the registration form with Bootstrap library and CSS ✅
 
 Technology: Bootstrap, React, Parse, HTML, CSS, Node.
+
+## Summary Component
+
+The Summary page provides aggregated statistics for workflow data, allowing users to view workload summaries grouped by different fields.
+
+### Features
+- **Aggregation Options**: Group workflows by campaign, CMSSW version, request type, request status, team name.
+- **Dynamic Table Headers**: Table column headers update based on selected aggregation field
+- **Statistics Display**: Shows count of workflows and aggregated job statistics (Created, Pending, Running, Success, Failure)
+- **Sorting**: Click column headers to sort data by any field
+- **Responsive Design**: Works on all screen sizes with modern card-based layout
+
+### Usage
+1. Navigate to `/summary` in the application
+2. Select an aggregation option from the buttons (e.g., "Campaign", "CMSSW", "Type")
+3. View the aggregated statistics in the table below
+4. Use the sortable column headers to organize data as needed
+
+### Aggregation Fields
+- **Campaign**: Groups by campaign names
+- **CMSSW**: Groups by CMSSW versions
+- **Type**: Groups by workflow types (ReReco, StepChain, TaskChain, etc.)
+- **Status**: Groups by workflow status (completed, announced, etc.)
+- **Team Name**: Groups by team names
 
 ## Workflow Query Parameters
 

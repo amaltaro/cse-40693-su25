@@ -20,8 +20,8 @@ const Components = () => {
             <Routes>
                 <Route path="/" element={<ProtectedRoute element={<Home />} />} />
                 <Route path="/workflow" element={<ProtectedRoute element={<Workflow />} />} />
-                <Route path="/location" element={<ProtectedRoute element={<Location />} />} />
                 <Route path="/summary" element={<ProtectedRoute element={<Summary />} />} />
+                <Route path="/location" element={<ProtectedRoute element={<Location />} />} />
                 <Route path="/agents" element={<ProtectedRoute element={<Agents />} />} />
                 <Route path="/services" element={<ProtectedRoute element={<Services />} />} />
                 <Route path="/auth" element={<Auth />} />
