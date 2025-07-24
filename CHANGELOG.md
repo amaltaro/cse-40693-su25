@@ -13,6 +13,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.6.0] - 2025-07-23
+
+### Added
+- Real-time Agents monitoring component with automatic data refresh every 10 seconds
+- Agents page endpoint at `/agents` for monitoring agent components
+- Automatic refresh functionality with visual timestamp indicators
+- Agents data table displaying agent status, errors, and timestamps
+- Consolidated Agents component architecture (removed unnecessary AgentsForm component)
+- Updated README documentation for Agents component
+
+### Changed
+- Refactored Agents component to use automatic refresh instead of manual refresh button
+- Improved Agents UI with consistent styling matching Workflow components
+- Enhanced user experience with real-time monitoring capabilities
+- Updated Agents component to use same header styling as Workflow Filters
+
+### Fixed
+- Removed duplicate refresh information in Agents component
+- Fixed browser caching issues with component updates
+- Improved component structure by consolidating functionality
+
+## [0.5.0] - 2025-07-22
+
+### Added
+- Summary component with aggregation functionality for workflow data
+- Dynamic aggregation by campaign, CMSSW, type, status, and team name
+- Sortable table headers for Summary component
+- URL query parameter support for Workflow component filtering
+- Workflow filtering by workflow name, status, type, campaign, and CMSSW
+- Summary statistics display with workflow counts and job statistics
+- Responsive design improvements for Summary and Workflow components
+
+### Changed
+- Enhanced Workflow component with URL-based filtering capabilities
+- Improved table functionality with sorting and filtering features
+- Updated component architecture for better data flow management
+- Enhanced user experience with bookmarkable filtered views
+
+### Fixed
+- Improved data fetching and state management in Summary component
+- Enhanced error handling in data aggregation processes
+- Fixed responsive design issues across different screen sizes
+
 ## [0.4.0] - 2025-07-19
 
 ### Added
