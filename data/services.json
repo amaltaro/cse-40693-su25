@@ -1,0 +1,24 @@
+[
+    {
+        "service": "Name_A",
+        "status": "running",
+        "timestamp": 1749136492
+    },
+    {
+        "service": "Name_B",
+        "status": "warning",
+        "error": "root partition above threshold",
+        "timestamp": 1749136493
+    },
+    {
+        "service": "Name_C",
+        "status": "error",
+        "error": "root partition full",
+        "timestamp": 1749136494
+    },
+    {
+        "service": "Name_D",
+        "status": "running",
+        "timestamp": 1749136495
+    }
+]

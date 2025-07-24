@@ -1,0 +1,24 @@
+[
+    {
+      "agent": "Agent_1",
+      "status": "running",
+      "timestamp": 1749136492
+    },
+    {
+      "agent": "Agent_2",
+      "status": "warning",
+      "error": "heartbeat timeout",
+      "timestamp": 1749136493
+    },
+    {
+      "agent": "Agent_3",
+      "status": "error",
+      "error": "component \"XYZ\" is down",
+      "timestamp": 1749136494
+    },
+    {
+      "agent": "Agent_4",
+      "status": "draining",
+      "timestamp": 1749136495
+    }
+  ]
