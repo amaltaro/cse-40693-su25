@@ -88,6 +88,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit, error }) => {
               {isLogin ? "Sign In" : "Create Account"}
             </button>
           </div>
+          {isLogin ? (
           <div className="auth-form-footer">
             <Link to="/auth/forgotPass" className="auth-link">
               <button className="btn btn-primary btn-lg auth-btn auth-btn-register">
@@ -96,6 +97,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit, error }) => {
               </button>
             </Link>
           </div>
+          ) : null}
         </form>
       </div>
     </div>
