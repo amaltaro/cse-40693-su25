@@ -82,17 +82,20 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit, error }) => {
             />
           </div>
 
-          <button type="submit" className="auth-form-btn">
-            <i className="bi bi-check-circle me-2"></i>
-            {isLogin ? "Sign In" : "Create Account"}
-          </button>
-
-          <Link to="/auth/forgotPass" className="auth-link">
-            <button className="btn btn-primary btn-lg auth-btn auth-btn-register">
-              <i className="bi bi-person-plus-fill me-2"></i>
-              Forgot Password
+          <div className="form-group">
+            <button type="submit" className="auth-form-btn">
+              <i className="bi bi-check-circle me-2"></i>
+              {isLogin ? "Sign In" : "Create Account"}
             </button>
-          </Link>
+          </div>
+          <div className="auth-form-footer">
+            <Link to="/auth/forgotPass" className="auth-link">
+              <button className="btn btn-primary btn-lg auth-btn auth-btn-register">
+                <i className="bi bi-person-plus-fill me-2"></i>
+                Forgot Password
+              </button>
+            </Link>
+          </div>
         </form>
       </div>
     </div>

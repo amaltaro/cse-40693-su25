@@ -295,6 +295,17 @@
     box-shadow: 0 8px 25px rgba(25, 135, 84, 0.4);
 }
 
+.workflow-btn-refresh {
+    background: linear-gradient(135deg, #5a07bf 0%, #49069a 100%);
+    color: white;
+}
+
+.workflow-btn-refresh:hover {
+    background: linear-gradient(135deg, #49069a 0%, #410985 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(25, 135, 84, 0.4);
+}
+
 .workflow-btn:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.3);
