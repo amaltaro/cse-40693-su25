@@ -70,6 +70,20 @@ http://localhost:3000/workflow
 - Visual filter indicators
 - Bookmarkable filtered views
 
+## Agents Component
+
+The Agents page provides real-time monitoring of agent components with automatic data refresh.
+
+### Endpoint
+```
+http://localhost:3000/agents
+```
+
+### Usage
+1. Navigate to `/agents` in the application
+2. View real-time agent status in the table
+3. Monitor automatic refresh every 10 seconds
+4. Check "Last refresh" timestamp for update status
 
 ## Instructions
 
