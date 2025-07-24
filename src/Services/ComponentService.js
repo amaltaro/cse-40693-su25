@@ -1,8 +1,8 @@
 import Parse from 'parse';
 
-export const getAllComponents = async (componentName) => {
+export const getAllComponents = async (componentType) => {
     try {
-        const Component = Parse.Object.extend(componentName);
+        const Component = Parse.Object.extend(componentType);
         const query = new Parse.Query(Component);
         const components = await query.find();
 
