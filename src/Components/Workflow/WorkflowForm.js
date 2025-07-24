@@ -41,7 +41,9 @@ export default function WorkflowForm() {
         });
 
         // Optionally, you can also just reload the page
-        // window.location.reload();
+        window.location.reload();
+        // Clear all search parameters and redirect to base workflow page
+        //setSearchParams({});
     }
 
     return (
