@@ -22,29 +22,6 @@ const Summary = () => {
                 console.log("Loaded workflows:", workflows.length);
                 if (workflows.length > 0) {
                     console.log("First workflow object:", workflows[0]);
-                console.log("Available fields in workflow:", Object.keys(workflows[0]));
-                console.log("Campaign field:", workflows[0].Campaign);
-                console.log("CMSSWVersion field:", workflows[0].CMSSWVersion);
-                
-                // Check if there are any fields that might be Campaign or CMSSW related
-                const allFields = Object.keys(workflows[0]);
-                const campaignFields = allFields.filter(field => 
-                    field.toLowerCase().includes('campaign') || 
-                    field.toLowerCase().includes('camp')
-                );
-                const cmsswFields = allFields.filter(field => 
-                    field.toLowerCase().includes('cmssw') || 
-                    field.toLowerCase().includes('version') ||
-                    field.toLowerCase().includes('sw')
-                );
-                
-                console.log("Fields that might be Campaign related:", campaignFields);
-                console.log("Fields that might be CMSSW related:", cmsswFields);
-                
-                // Let's also check if any of the existing fields contain Campaign or CMSSW information
-                console.log("RequestName (might contain campaign info):", workflows[0].RequestName);
-                console.log("Team (might contain campaign info):", workflows[0].Team);
-                console.log("InputDataset (might contain version info):", workflows[0].InputDataset);
                 }
                 setWorkflows(workflows);
             } catch (error) {
