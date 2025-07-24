@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { getAllWorkflows } from "../../Services/WorkflowService";
 
-export default function WorkflowForm() {
+export default function WorkflowForm({ onRefresh }) {
     console.log("Executing WorkflowForm module");
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -29,21 +29,11 @@ export default function WorkflowForm() {
         setSearchParams({});
     };
 
-
     const handleRefresh = () => {
-        // Refresh the data by fetching all workflows
-        console.log("Refresh button clicked");
-        getAllWorkflows().then(workflows => {
-            console.log("Refreshed workflows:", workflows);
-            // Here you can update the state or UI with the new workflows
-        }).catch(error => {
-            console.error("Error refreshing workflows:", error);
-        });
-
-        // Optionally, you can also just reload the page
-        window.location.reload();
-        // Clear all search parameters and redirect to base workflow page
-        //setSearchParams({});
+        console.log("Refresh button clicked in WorkflowForm");
+        if (onRefresh) {
+            onRefresh();
+        }
     }
 
     return (

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { useSearchParams } from "react-router-dom";
+
 import { getAllWorkflows, getWorkflowsByQuery } from "../../Services/WorkflowService";
 import Header from '../Header/Header';
 import WorkflowForm from "./WorkflowForm.js";
@@ -12,6 +14,18 @@ const Workflow = () => {
     const [workflows, setWorkflows] = useState([]);
     const [searchParams] = useSearchParams();
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+
+    // Add refresh function
+    const handleRefresh = async () => {
+        console.log("Refresh button clicked");
+        try {
+            const newWorkflows = await getAllWorkflows();
+            console.log("Refreshed workflows:", newWorkflows);
+            setWorkflows(newWorkflows);
+        } catch (error) {
+            console.error("Error refreshing workflows:", error);
+        }
+    };
 
     useEffect(() => {
         // Extract query parameters from URL
@@ -100,7 +114,7 @@ useEffect(() => {
         <section>
             <Header title="WM Workflow" />
             <div className="container-fluid workflow-form-section">
-                <WorkflowForm />
+                <WorkflowForm onRefresh={handleRefresh} />
             </div>
 
             {/* Display active filters if any */}
