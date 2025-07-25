@@ -1,7 +1,12 @@
 import { useState } from "react";
 import "./SummaryAgg.css";
 
-export default function SummaryAgg({ onAggregationChange, selectedAggregation = 'campaign' }) {
+export default function SummaryAgg({
+    onAggregationChange,
+    selectedAggregation = 'campaign',
+    onDownloadCSV,
+    hasData = false
+}) {
     const [localSelectedAggregation, setLocalSelectedAggregation] = useState(selectedAggregation);
 
     const aggregationOptions = [
@@ -15,6 +20,12 @@ export default function SummaryAgg({ onAggregationChange, selectedAggregation = 
     const handleAggregationChange = (aggregationKey) => {
         setLocalSelectedAggregation(aggregationKey);
         onAggregationChange(aggregationKey);
+    };
+
+    const handleDownloadClick = () => {
+        if (onDownloadCSV) {
+            onDownloadCSV();
+        }
     };
 
     return (
@@ -48,8 +59,9 @@ export default function SummaryAgg({ onAggregationChange, selectedAggregation = 
                         <div className="summary-form-actions">
                             <button
                                 type="button"
-                                className="summary-btn summary-btn-success"
-                                onClick={() => {/* TODO: Add CSV download functionality */}}
+                                className={`summary-btn summary-btn-success ${!hasData ? 'disabled' : ''}`}
+                                onClick={handleDownloadClick}
+                                disabled={!hasData}
                             >
                                 <i className="bi bi-download me-2"></i>
                                 Download as CSV

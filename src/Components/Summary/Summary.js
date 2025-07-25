@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { getAllWorkflows } from "../../Services/WorkflowService";
 import { aggregateWorkflowsByField, getFieldDisplayName } from "../../Services/SummaryService";
+import { downloadSummaryAsCSV } from "../../Services/CsvService";
 import Header from '../Header/Header';
 import SummaryAgg from "./SummaryAgg.js";
 import SummaryList from "./SummaryList.js";
@@ -108,6 +109,11 @@ const Summary = () => {
 
     const fieldDisplayName = getFieldDisplayName(aggregationField);
 
+    // CSV download function
+    const handleDownloadCSV = () => {
+        downloadSummaryAsCSV(sortedSummaryData, fieldDisplayName);
+    };
+
     return (
         <section>
             <Header title="WM Summary" />
@@ -115,6 +121,8 @@ const Summary = () => {
                 <SummaryAgg 
                     onAggregationChange={handleAggregationChange} 
                     selectedAggregation={aggregationField}
+                    onDownloadCSV={handleDownloadCSV}
+                    hasData={sortedSummaryData.length > 0}
                 />
             </div>
 

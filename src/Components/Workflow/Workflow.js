@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { getAllWorkflows, getWorkflowsByQuery } from "../../Services/WorkflowService";
+import { downloadWorkflowsAsCSV } from "../../Services/CsvService";
 import Header from '../Header/Header';
 import WorkflowForm from "./WorkflowForm.js";
 import WorkflowList from "./WorkflowList.js";
@@ -126,31 +127,23 @@ const Workflow = () => {
     // Sort workflows based on current configuration
     const sortedWorkflows = sortWorkflows(workflows, sortConfig.key, sortConfig.direction);
 
+    // CSV download function
+    const handleDownloadCSV = () => {
+        downloadWorkflowsAsCSV(sortedWorkflows);
+    };
+
     return (
         <section>
             <Header title="WM Workflow" />
             <div className="container-fluid workflow-form-section">
-                <div className="workflow-form-wrapper">
-                    <div className="workflow-form-card">
-                        <div className="workflow-form-header">
-                            <h3 className="workflow-form-title">
-                                <i className="bi bi-arrow-clockwise me-2"></i>
-                                Real-time workflow monitoring with automatic refresh every 10 seconds.
-                            </h3>
-                            {/* Last refresh timestamp */}
-                            {lastRefresh && (
-                                <p className="last-refresh-text">
-                                    <i className="bi bi-clock me-1"></i>
-                                    Last refresh: {lastRefresh.toLocaleTimeString()}
-                                </p>
-                            )}
-                        </div>
-                    </div>
-                </div>
+                <WorkflowForm
+                    onRefresh={loadWorkflows}
+                    onDownloadCSV={handleDownloadCSV}
+                    hasData={sortedWorkflows.length > 0}
+                    lastRefresh={lastRefresh}
+                />
             </div>
-            <div className="container-fluid workflow-form-section">
-                <WorkflowForm />
-            </div>
+
             {/* Display active filters if any */}
             {activeFilters.length > 0 && (
                 <div className="container-fluid active-filters-container">

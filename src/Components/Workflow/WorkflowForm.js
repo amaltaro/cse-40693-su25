@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-export default function WorkflowForm({ onRefresh }) {
+export default function WorkflowForm({ onRefresh, onDownloadCSV, hasData = false, lastRefresh }) {
     console.log("Executing WorkflowForm module");
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -18,7 +18,7 @@ export default function WorkflowForm({ onRefresh }) {
     };
 
     const handleReset = () => {
-        console.log("Reset button clicked");
+        console.log("Reset button clicked in WorkflowForm");
         // Clear all form inputs
         const form = document.querySelector('.workflow-form');
         if (form) {
@@ -27,6 +27,13 @@ export default function WorkflowForm({ onRefresh }) {
         // Clear all search parameters and redirect to base workflow page
         setSearchParams({});
     };
+
+    const handleDownloadClick = (e) => {
+        e.preventDefault(); // Prevent form submission
+        if (onDownloadCSV) {
+            onDownloadCSV();
+        }
+    }
 
     return (
         <section>
@@ -40,6 +47,12 @@ export default function WorkflowForm({ onRefresh }) {
                         <p className="workflow-form-description">
                             Use the filters below to search and filter workflow data. Type in any field to filter the table below.
                         </p>
+                        {lastRefresh && (
+                            <p className="last-refresh-text">
+                                <i className="bi bi-clock me-1"></i>
+                                Last refresh: {lastRefresh.toLocaleTimeString()}
+                            </p>
+                        )}
                     </div>
 
                     <form method="GET" className="workflow-form">
@@ -231,6 +244,7 @@ export default function WorkflowForm({ onRefresh }) {
                                 id="downloadCsvBtn"
                                 type="button"
                                 className="workflow-btn workflow-btn-success"
+                                onClick={handleDownloadClick}
                             >
                                 <i className="bi bi-download me-2"></i>
                                 Download as CSV
