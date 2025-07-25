@@ -14,6 +14,7 @@ This project provides the following key features:
 To see previous implementations, please click in the link belows:
 * [Feature 5](#feature-5---authentication)
 * [Feature 4](#feature-4---routing--parse)
+* [Feature 3](#feature-3---intro-to-component-architecture)
 * [React Instructions](#react-instructions)
 
 # Feature 6 - Feature Branch
@@ -204,6 +205,13 @@ NOTE: the WM Workflow page contains the axios/json requirements for this assignm
 * All Parse queries outside of controllers / components and inside of Parse Models
 * Correctly load asynchronous data to components
 
+
+# Feature 3 - Intro to Component Architecture
+
+* Student A: Ryan Hartung
+* Student B: Alan Malta Rodrigues
+
+This assignment consisted of adopting React components and loading data from a JSON file instead of the database.
 
 ## Directory Structure
 
