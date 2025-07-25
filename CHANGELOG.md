@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Agents data table displaying agent status, errors, and timestamps
 - Consolidated Agents component architecture (removed unnecessary AgentsForm component)
 - Updated README documentation for Agents component
+- Added a ``Forgot Password'' button to the login page
 
 ### Changed
 - Refactored Agents component to use automatic refresh instead of manual refresh button
