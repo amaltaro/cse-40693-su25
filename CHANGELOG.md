@@ -13,11 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-## [0.6.0] - 2025-07-23
+## [0.6.0] - 2025-07-24
 
 ### Added
-- Real-time Agents monitoring component with automatic data refresh every 10 seconds
+- Real-time monitoring component for Agents and Central Services with automatic data refresh every 10 seconds
+- Pull latest workflow data every 10 seconds
 - Agents page endpoint at `/agents` for monitoring agent components
+- Central Services page endpoint at `/services` for monitoring central services components
 - Automatic refresh functionality with visual timestamp indicators
 - Agents data table displaying agent status, errors, and timestamps
 - Consolidated Agents component architecture (removed unnecessary AgentsForm component)
