@@ -1,3 +1,21 @@
+This application was created as a final project for the course Modern Web Development, Summer 2025.
+
+This web application provides a system for central production workflow for the Compact Muon Solenoid (CMS) experiment, at CERN. The current monitoring system is outdated, slow and doesn't include some quality of life features.
+
+This project provides the following key features:
+* URL searchable: moving away from single static url. The new implementation accepts URL query strings for efficient object look-up.
+* Aggregation filters: allowing for easy summarization of workflows, based on key parameters.
+* CSV generation: users can download the monitoring information (plain or summary) as comma-separated values file.
+* Responsibe layout for different devices and screen sizes.
+* Awesome UX: with the adoption of modern styles and library (powered by Bootstrap library!)
+
+**Technology:** Bootstrap, React, Parse (through back4app), HTML, CSS, Node.
+
+To see previous implementations, please click in the link belows:
+* [Feature 5](#feature-5---authentication)
+* [Feature 4](#feature-4---routing--parse)
+* [React Instructions](#react-instructions)
+
 # Feature 6 - Feature Branch
 
 Ryan Hartung:
@@ -10,49 +28,46 @@ Alan Malta Rodrigues:
 2. User should be able to have a "Summary" page with different filters to summarize the workload in the system ✅
 3. Developer should be able to style the registration form with Bootstrap library and CSS ✅
 
-Technology: Bootstrap, React, Parse, HTML, CSS, Node.
+## Functionality Summary
 
-## Summary Component
+First of all, it is important to mention that this application is only available for registered and authenticated users. Until an user gets authenticate, he/she only has access to the login and registration pages.
 
-The Summary page provides aggregated statistics for workflow data, allowing users to view workload summaries grouped by different fields.
+Once authenticate, the user will see the `Home` page for the `CMS Workflow Monitoring` webapp, and a navigation menu with the following pages.
 
-### Features
-- **Aggregation Options**: Group workflows by campaign, CMSSW version, request type, request status, team name.
-- **Dynamic Table Headers**: Table column headers update based on selected aggregation field
-- **Statistics Display**: Shows count of workflows and aggregated job statistics (Created, Pending, Running, Success, Failure)
-- **Sorting**: Click column headers to sort data by any field
-- **Responsive Design**: Works on all screen sizes with modern card-based layout
+### Summary
 
-### Usage
-1. Navigate to `/summary` in the application
-2. Select an aggregation option from the buttons (e.g., "Campaign", "CMSSW", "Type")
-3. View the aggregated statistics in the table below
-4. Use the sortable column headers to organize data as needed
+The Summary page provides aggregated statistics for workflow data, allowing users to view workload summaries grouped by different fields (`Campaign` is the default aggregation field).
 
-### Aggregation Fields
-- **Campaign**: Groups by campaign names
-- **CMSSW**: Groups by CMSSW versions
-- **Type**: Groups by workflow types (ReReco, StepChain, TaskChain, etc.)
-- **Status**: Groups by workflow status (completed, announced, etc.)
-- **Team Name**: Groups by team names
+**Features:**
+* **Continuous update**: data is fetched and re-rendered every 10 seconds, hence providing a quasi real-time monitoring and aggregation.
+* **Aggregation Options**: Group workflows by Campaign, CMSSW version, request type, request status and team name.
+* **Dynamic Table Headers**: Table column headers update based on selected aggregation field
+* **Statistics Display**: Shows count of workflows and aggregated job statistics (Created, Pending, Running, Success, Failure)
+* **Sorting**: table column headers can be sorted by any fields.
 
-## Workflow Query Parameters
+**Endpoint:** navigate to the `/summary` endpoint.
 
-The workflow page supports URL query parameters for filtering workflow data:
 
-### Endpoint
-```
-http://localhost:3000/workflow
-```
+### Workflow
 
-### Supported Query Parameters
-- `workflow` - Filter by workflow name
-- `status` - Filter by workflow status
-- `type` - Filter by workflow type
-- `campaign` - Filter by campaign name
-- `cmssw` - Filter by CMSSW version
+The Workflow page supports URL query parameters for filtering workflow data. The user can search for specific workflows through the several input text fields, re-rendering data in the table and automatically updating the URL, for easy sharing functionality.
 
-### Usage Examples
+**Features:**
+* **Continuous update**: data is fetched and re-rendered every 10 seconds, hence providing a quasi real-time monitoring and aggregation.
+* **Search Options**: User can type in single or multiple filters to be applied on the data shown in the table.
+* **URL Searchable**: full support to URL query strings, hence providing efficient data look-up.
+* **Sorting**: table column headers can be sorted by any fields.
+
+**Endpoint:** navigate to the `workflow` endpoint.
+
+**Query Parameters Support:**
+* `workflow` - Filter by workflow name
+* `status` - Filter by workflow status
+* `type` - Filter by workflow type
+* `campaign` - Filter by campaign name
+* `cmssw` - Filter by CMSSW version
+
+**Usage Examples:**
 ```
 # Single filter
 /workflow?workflow=test
@@ -64,37 +79,33 @@ http://localhost:3000/workflow
 /workflow?workflow=test&status=active&type=manual&campaign=Run2023&cmssw=12_4_0
 ```
 
-### Features
-- Case-insensitive filtering
-- Real-time table updates
-- Visual filter indicators
-- Bookmarkable filtered views
 
-## Agents Component
+### Central Services
 
-The Agents page provides real-time monitoring of agent components with automatic data refresh.
+The Central Services page provides real-time monitoring of the web-services in the Workload Management eco-system, including their statuses and latest update timestamp.
 
-## Central Services Component
+**Features:**
+* **Continuous update**: data is fetched and re-rendered every 10 seconds, hence providing a quasi real-time monitoring and aggregation.
 
-The Central Services page provides real-time monitoring of service components with automatic data refresh.
+**Endpoint:** navigate to the `/services` endpoint.
 
-### Endpoint
-```
-http://localhost:3000/agents
-```
 
-### Usage
-1. Navigate to `/agents` in the application
-2. View real-time agent status in the table
-3. Monitor automatic refresh every 10 seconds
-4. Check "Last refresh" timestamp for update status
+### Agents
 
-## Instructions
+The Agents page provides real-time monitoring of the agents in the Workload Management eco-system, including their statuses and latest update timestamp.
 
-### Starting webpack
-```
-npm start
-```
+**Features:**
+* **Continuous update**: data is fetched and re-rendered every 10 seconds, hence providing a quasi real-time monitoring and aggregation.
+
+**Endpoint:** navigate to the `/agents` endpoint.
+
+
+### Location
+
+The Location page provides an embedded map with the CERN location.
+
+**Endpoint:** navigate to the `/location` endpoint.
+
 
 
 
@@ -207,7 +218,7 @@ While directories created through `npx create-react-app` are:
 * src
 
 
-# Getting Started with Create React App
+# React instructions
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
