@@ -50,7 +50,7 @@ const Services = () => {
 
     return (
         <section>
-            <Header title="WM Workflow" />
+            <Header title="WM Central Services" />
             {/* Services Monitor Header */}
             <div className="container-fluid workflow-form-section">
                 <div className="workflow-form-wrapper">
