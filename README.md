@@ -1,9 +1,9 @@
 # Feature 6 - Feature Branch
 
 Ryan Hartung:
-1. User should be able to reset a password through a "Forgot password" button
-2. Developer/User should be able to see the status of "Central Services" components
-3. Developer/User should be able to see the status of "Agents" components
+1. User should be able to reset a password through a "Forgot password" button ✅
+2. Developer/User should be able to see the status of "Central Services" components ✅
+3. Developer/User should be able to see the status of "Agents" components ✅
 
 Alan Malta Rodrigues:
 1. User should be able to parameterize the URL to access specific workflow objects ✅
@@ -73,6 +73,10 @@ http://localhost:3000/workflow
 ## Agents Component
 
 The Agents page provides real-time monitoring of agent components with automatic data refresh.
+
+## Central Services Component
+
+The Central Services page provides real-time monitoring of service components with automatic data refresh.
 
 ### Endpoint
 ```
