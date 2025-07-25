@@ -1,5 +1,4 @@
 import { useSearchParams } from "react-router-dom";
-import { getAllWorkflows } from "../../Services/WorkflowService";
 
 export default function WorkflowForm({ onRefresh }) {
     console.log("Executing WorkflowForm module");
@@ -28,13 +27,6 @@ export default function WorkflowForm({ onRefresh }) {
         // Clear all search parameters and redirect to base workflow page
         setSearchParams({});
     };
-
-    const handleRefresh = () => {
-        console.log("Refresh button clicked in WorkflowForm");
-        if (onRefresh) {
-            onRefresh();
-        }
-    }
 
     return (
         <section>
@@ -223,6 +215,8 @@ export default function WorkflowForm({ onRefresh }) {
                             </div>
                         </div>
 
+                        <br />
+
                         <div className="workflow-form-actions">
                             <button
                                 id="resetBtn"
@@ -240,15 +234,6 @@ export default function WorkflowForm({ onRefresh }) {
                             >
                                 <i className="bi bi-download me-2"></i>
                                 Download as CSV
-                            </button>
-                            <button
-                                id="resetBtn"
-                                type="button"
-                                className="workflow-btn workflow-btn-refresh"
-                                onClick={handleRefresh}
-                            >
-                                <i className="bi bi-arrow-clockwise me-2"></i>
-                                Refresh Data
                             </button>
                         </div>
                     </form>

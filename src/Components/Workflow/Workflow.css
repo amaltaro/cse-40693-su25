@@ -429,3 +429,11 @@
         transform: scale(1.1);
     }
 } 
+
+/* Last refresh text styling */
+.last-refresh-text {
+    color: white !important;
+    opacity: 0.9 !important;
+    margin: 0;
+    font-size: 0.875rem;
+}

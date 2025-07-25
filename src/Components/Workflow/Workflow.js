@@ -14,18 +14,7 @@ const Workflow = () => {
     const [workflows, setWorkflows] = useState([]);
     const [searchParams] = useSearchParams();
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
-
-    // Add refresh function
-    const handleRefresh = async () => {
-        console.log("Refresh button clicked");
-        try {
-            const newWorkflows = await getAllWorkflows();
-            console.log("Refreshed workflows:", newWorkflows);
-            setWorkflows(newWorkflows);
-        } catch (error) {
-            console.error("Error refreshing workflows:", error);
-        }
-    };
+    const [lastRefresh, setLastRefresh] = useState(new Date());
 
     useEffect(() => {
         // Extract query parameters from URL
@@ -70,15 +59,42 @@ const Workflow = () => {
         }
     }, [searchParams]); // Re-run when search params change
 
-// Initialize table features after workflows are loaded and rendered
-useEffect(() => {
-    if (workflows.length > 0) {
-        // Use setTimeout to ensure the DOM is updated after the render
-        setTimeout(() => {
-            initializeTableFeatures();
-        }, 10);
-    }
-}, [workflows]);
+    // Function to load workflows
+    const loadWorkflows = async () => {
+        try {
+            getAllWorkflows().then((workflows) => {
+                setWorkflows(workflows);
+            });
+            setLastRefresh(new Date());
+        } catch (error) {
+            console.error("Error loading workflows:", error);
+        }
+    };
+
+    // Initialize table features after workflows are loaded and rendered
+    useEffect(() => {
+        if (workflows.length > 0) {
+            // Use setTimeout to ensure the DOM is updated after the render
+            setTimeout(() => {
+                initializeTableFeatures();
+            }, 10);
+        }
+    }, [workflows]);
+
+
+    // Load agents on component mount
+    useEffect(() => {
+        loadWorkflows();
+    }, []);
+
+    // Set up automatic refresh every 10 seconds
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            loadWorkflows();
+        }, 10000); // 10 seconds
+        // Cleanup interval on component unmount
+        return () => clearInterval(intervalId);
+    }, []);
 
     // Helper function to display current filters
     const getActiveFilters = () => {
@@ -110,13 +126,31 @@ useEffect(() => {
     // Sort workflows based on current configuration
     const sortedWorkflows = sortWorkflows(workflows, sortConfig.key, sortConfig.direction);
 
-        return (
+    return (
         <section>
             <Header title="WM Workflow" />
             <div className="container-fluid workflow-form-section">
-                <WorkflowForm onRefresh={handleRefresh} />
+                <div className="workflow-form-wrapper">
+                    <div className="workflow-form-card">
+                        <div className="workflow-form-header">
+                            <h3 className="workflow-form-title">
+                                <i className="bi bi-arrow-clockwise me-2"></i>
+                                Real-time workflow monitoring with automatic refresh every 10 seconds.
+                            </h3>
+                            {/* Last refresh timestamp */}
+                            {lastRefresh && (
+                                <p className="last-refresh-text">
+                                    <i className="bi bi-clock me-1"></i>
+                                    Last refresh: {lastRefresh.toLocaleTimeString()}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                </div>
             </div>
-
+            <div className="container-fluid workflow-form-section">
+                <WorkflowForm />
+            </div>
             {/* Display active filters if any */}
             {activeFilters.length > 0 && (
                 <div className="container-fluid active-filters-container">
@@ -147,125 +181,125 @@ useEffect(() => {
                         id="workflowTable"
                         className="table table-light table-striped table-hover table-bordered table-sm workflow-table"
                     >
-        <thead className="table-light">
-        <tr>
-            <th scope="col">#</th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('RequestName')}
-            >
-                Workflow
-                {sortConfig.key === 'RequestName' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1`} style={{color: 'white', fontSize: '0.9rem'}}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1" style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem'}}></i>
-                )}
-            </th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('RequestStatus')}
-            >
-                Status
-                {sortConfig.key === 'RequestStatus' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1`} style={{color: 'white', fontSize: '0.9rem'}}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1" style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem'}}></i>
-                )}
-            </th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('RequestType')}
-            >
-                Type
-                {sortConfig.key === 'RequestType' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1`} style={{color: 'white', fontSize: '0.9rem'}}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1" style={{color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem'}}></i>
-                )}
-            </th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('RequestPriority')}
-            >
-                Priority
-                {sortConfig.key === 'RequestPriority' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
-                )}
-            </th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('jobs_created')}
-            >
-                Created
-                {sortConfig.key === 'jobs_created' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
-                )}
-            </th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('jobs_pending')}
-            >
-                Pending
-                {sortConfig.key === 'jobs_pending' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
-                )}
-            </th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('jobs_running')}
-            >
-                Running
-                {sortConfig.key === 'jobs_running' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
-                )}
-            </th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('jobs_success')}
-            >
-                Success
-                {sortConfig.key === 'jobs_success' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
-                )}
-            </th>
-            <th
-                scope="col"
-                className="sortable-header"
-                onClick={() => handleSort('jobs_failed')}
-            >
-                Failure
-                {sortConfig.key === 'jobs_failed' ? (
-                    <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
-                ) : (
-                    <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
-                )}
-            </th>
-        </tr>
-        </thead>
-        <WorkflowList workflows={sortedWorkflows} />
-        </table>
-    </div>
-</div>
-    </section>
-);
+                        <thead className="table-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('RequestName')}
+                                >
+                                    Workflow
+                                    {sortConfig.key === 'RequestName' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1`} style={{ color: 'white', fontSize: '0.9rem' }}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}></i>
+                                    )}
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('RequestStatus')}
+                                >
+                                    Status
+                                    {sortConfig.key === 'RequestStatus' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1`} style={{ color: 'white', fontSize: '0.9rem' }}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}></i>
+                                    )}
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('RequestType')}
+                                >
+                                    Type
+                                    {sortConfig.key === 'RequestType' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1`} style={{ color: 'white', fontSize: '0.9rem' }}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}></i>
+                                    )}
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('RequestPriority')}
+                                >
+                                    Priority
+                                    {sortConfig.key === 'RequestPriority' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
+                                    )}
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('jobs_created')}
+                                >
+                                    Created
+                                    {sortConfig.key === 'jobs_created' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
+                                    )}
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('jobs_pending')}
+                                >
+                                    Pending
+                                    {sortConfig.key === 'jobs_pending' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
+                                    )}
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('jobs_running')}
+                                >
+                                    Running
+                                    {sortConfig.key === 'jobs_running' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
+                                    )}
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('jobs_success')}
+                                >
+                                    Success
+                                    {sortConfig.key === 'jobs_success' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
+                                    )}
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="sortable-header"
+                                    onClick={() => handleSort('jobs_failed')}
+                                >
+                                    Failure
+                                    {sortConfig.key === 'jobs_failed' ? (
+                                        <i className={`bi bi-arrow-${sortConfig.direction === 'asc' ? 'up' : 'down'} ms-1 sort-indicator active`}></i>
+                                    ) : (
+                                        <i className="bi bi-arrow-up-down ms-1 sort-indicator inactive"></i>
+                                    )}
+                                </th>
+                            </tr>
+                        </thead>
+                        <WorkflowList workflows={sortedWorkflows} />
+                    </table>
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default Workflow;
