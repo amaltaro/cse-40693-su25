@@ -13,71 +13,77 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.7.0] - 2025-07-24
+
+### Added
+- CSV download functionality for Workflow and Summary components
+- Reusable CSV service with automatic filename generation
+- InfoModal integration for password reset functionality
+- Last refresh indicators for Workflow component
+
+### Changed
+- Replaced browser alerts with InfoModal component in AuthForgotPass
+- Updated Workflow component to display refresh status in header container
+- Cleaned up unused CSS code in Services and Agents components
+- Simplified CSV service architecture
+
+### Fixed
+- Fixed double CSV download issue in Workflow component
+- Removed unused lastRefresh state from Workflow component
+
 ## [0.6.0] - 2025-07-24
 
 ### Added
-- Real-time monitoring component for Agents and Central Services with automatic data refresh every 10 seconds
-- Pull latest workflow data every 10 seconds
-- Agents page endpoint at `/agents` for monitoring agent components
-- Central Services page endpoint at `/services` for monitoring central services components
-- Automatic refresh functionality with visual timestamp indicators
-- Agents data table displaying agent status, errors, and timestamps
-- Consolidated Agents component architecture (removed unnecessary AgentsForm component)
+- Real-time monitoring for Agents and Central Services components
+- Automatic data refresh every 10 seconds
+- Agents page endpoint at `/agents`
+- Central Services page endpoint at `/services`
 - Updated README documentation for Agents component
-- Added a "Forgot Password" button to the login page
 
 ### Changed
-- Refactored Agents component to use automatic refresh instead of manual refresh button
-- Improved Agents UI with consistent styling matching Workflow components
-- Enhanced user experience with real-time monitoring capabilities
-- Updated Agents component to use same header styling as Workflow Filters
+- Refactored Agents component to use automatic refresh
+- Improved Agents UI with consistent styling
+- Updated Agents component to use same header styling as Workflow
 
 ### Fixed
 - Removed duplicate refresh information in Agents component
-- Fixed browser caching issues with component updates
 - Improved component structure by consolidating functionality
 
 ## [0.5.0] - 2025-07-22
 
 ### Added
-- Summary component with aggregation functionality for workflow data
+- Summary component with aggregation functionality
 - Dynamic aggregation by campaign, CMSSW, type, status, and team name
 - Sortable table headers for Summary component
 - URL query parameter support for Workflow component filtering
-- Workflow filtering by workflow name, status, type, campaign, and CMSSW
 - Summary statistics display with workflow counts and job statistics
-- Responsive design improvements for Summary and Workflow components
 
 ### Changed
 - Enhanced Workflow component with URL-based filtering capabilities
 - Improved table functionality with sorting and filtering features
-- Updated component architecture for better data flow management
 - Enhanced user experience with bookmarkable filtered views
 
 ### Fixed
 - Improved data fetching and state management in Summary component
 - Enhanced error handling in data aggregation processes
-- Fixed responsive design issues across different screen sizes
 
 ## [0.4.0] - 2025-07-19
 
 ### Added
-- Added bootstrap-icons to the application for enhanced UI
-- New modal system to handle authentication transitions and user feedback
-- Redesigned credentials components with modern card layouts for forms and buttons
+- Bootstrap-icons for enhanced UI
+- Modal system for authentication transitions and user feedback
+- Redesigned credentials components with modern card layouts
 
 ### Changed
-- Refactored ProtectedRoute component to automatically redirect unauthenticated users to `/auth` instead of showing unauthorized page
-- Adopted Modal component across all credential components for consistent user experience
+- Refactored ProtectedRoute component to automatically redirect unauthenticated users
+- Adopted Modal component across all credential components
 - Applied modern/responsive design to ProfileMenu
-- Redesigned Credentials component with modern card layouts for forms and buttons
-- Fixed responsive issues across different screen sizes for Home and Header components
-- Fixed logout call to throw errors instead of using alerts from Services layer
-- Updated README with Feature 6 list of developments
+- Redesigned Credentials component with modern card layouts
+- Fixed responsive issues across different screen sizes
 
 ### Fixed
-- Fixed responsive problems across different screen sizes for Home and Header
-- Improved error handling in logout process by throwing errors instead of alerts
+- Fixed responsive problems across different screen sizes
+- Improved error handling in logout process
 
 ## [0.3.0] - 2025-07-10
 
@@ -87,6 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comment StrictMode out to avoid duplicate effects/events
 
 ### Fixed
+
 
 ## [0.2.4] - 2025-07-10
 
